@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran NFC Verse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .verse-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 90%;
+        }
+        .arabic {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            direction: rtl;
+        }
+        .translation {
+            font-size: 18px;
+            color: #555;
+        }
+        select, button {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quran NFC Verse</h2>
+    <div class="verse-box">
+        <p class="arabic" id="arabic-text"></p>
+        <p class="translation" id="translation-text"></p>
+        <audio id="audio-player" controls style="margin-top: 10px; display: block;"></audio>
+    </div>
+    <select id="language-selector">
+        <option value="english">English</option>
+        <option value="french">Français</option>
+    </select>
+    <button onclick="showRandomVerse()">Refresh Verse</button>
+    <button onclick="playAudio()">Play Recitation</button>
+    
+    <script>
+        const verses = [
+            {
+                arabic: "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
+                translations: {
+                    english: "Indeed, with hardship comes ease. (94:6)",
+                    french: "En vérité, avec la difficulté, il y a une facilité. (94:6)"
+                },
+                audio: "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudais/094006.mp3"
+            },
+            {
+                arabic: "ٱللَّهُ نُورُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ",
+                translations: {
+                    english: "Allah is the Light of the heavens and the earth. (24:35)",
+                    french: "Allah est la lumière des cieux et de la terre. (24:35)"
+                },
+                audio: "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudais/024035.mp3"
+            }
+        ];
+
+        function showRandomVerse() {
+            const randomIndex = Math.floor(Math.random() * verses.length);
+            const verse = verses[randomIndex];
+            const language = document.getElementById("language-selector").value;
+            
+            document.getElementById("arabic-text").innerText = verse.arabic;
+            document.getElementById("translation-text").innerText = verse.translations[language];
+            
+            const audioPlayer = document.getElementById("audio-player");
+            audioPlayer.src = verse.audio;
+            audioPlayer.load(); // 确保音频正确加载
+        }
+
+        function playAudio() {
+            const audioPlayer = document.getElementById("audio-player");
+            if (audioPlayer.src && audioPlayer.readyState >= 2) { // 确保音频已加载
+                console.log("Playing audio: ", audioPlayer.src);
+                audioPlayer.play().catch(error => console.log("Playback error: ", error));
+            } else {
+                console.log("Audio not ready");
+            }
+        }
+
+        document.getElementById("language-selector").addEventListener("change", showRandomVerse);
+        window.onload = showRandomVerse;
+    </script>
+</body>
+</html>
