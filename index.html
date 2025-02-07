@@ -44,8 +44,10 @@
         <audio id="audio-player" controls style="margin-top: 10px; display: block;"></audio>
     </div>
     <select id="language-selector">
+        <option value="arabic">العربية</option>
         <option value="english">English</option>
         <option value="french">Français</option>
+        <option value="urdu">اردو</option>
     </select>
     <button onclick="showRandomVerse()">Refresh Verse</button>
     <button onclick="playAudio()">Play Recitation</button>
@@ -53,18 +55,20 @@
     <script>
         const verses = [
             {
-                arabic: "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
+                arabic: "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا فَإِذَا فَرَغْتَ فَٱنصَبْ وَإِلَىٰ رَبِّكَ فَٱرْغَبْ",
                 translations: {
-                    english: "Indeed, with hardship comes ease. (94:6)",
-                    french: "En vérité, avec la difficulté, il y a une facilité. (94:6)"
+                    english: "Indeed, with hardship comes ease. So when you have finished [your duties], then stand up [for worship]. And to your Lord direct [your] longing.",
+                    french: "En vérité, avec la difficulté vient la facilité. Alors, quand tu as terminé [tes obligations], lève-toi [pour prier] et tourne-toi vers ton Seigneur avec ardeur.",
+                    urdu: "بیشک مشکل کے ساتھ آسانی ہے۔ پس جب تو فارغ ہو، تو عبادت کے لیے کھڑا ہو جا اور اپنے رب کی طرف متوجہ ہو۔"
                 },
                 audio: "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudais/094006.mp3"
             },
             {
-                arabic: "ٱللَّهُ نُورُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ",
+                arabic: "ٱللَّهُ نُورُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ ۚ مَثَلُ نُورِهِۦ كَمِشْكَوٰةٍ فِيهَا مِصْبَاحٌ ٱلْمِصْبَاحُ فِى زُجَاجَةٍ...",
                 translations: {
-                    english: "Allah is the Light of the heavens and the earth. (24:35)",
-                    french: "Allah est la lumière des cieux et de la terre. (24:35)"
+                    english: "Allah is the Light of the heavens and the earth. The example of His light is like a niche within which is a lamp...",
+                    french: "Allah est la lumière des cieux et de la terre. L'exemple de Sa lumière est comme une niche où se trouve une lampe...",
+                    urdu: "اللہ آسمانوں اور زمین کا نور ہے۔ اس کے نور کی مثال ایسی ہے جیسے ایک طاق جس میں چراغ ہو..."
                 },
                 audio: "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudais/024035.mp3"
             }
